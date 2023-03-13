@@ -1,8 +1,8 @@
 const ArticleCard = ({ article }) => {
   return (
-    <li>
+    <li className="article-card">
       <img src={article.article_img_url} alt={article.title} />
-      <h2>{article.title}</h2>
+      <h3>{article.title}</h3>
       <p>Topic: {article.topic}</p>
       <p>By: {article.author}</p>
       <p>Votes: {article.votes}</p>

@@ -7,17 +7,12 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Header>
-        <Header />
-      </Header>
-      <nav>
-        <NavBar />
-      </nav>
-      <main>
-        <Routes>
-          <Route path="/" element={<Articles />} />
-        </Routes>
-      </main>
+      <Header />
+      <NavBar />
+
+      <Routes>
+        <Route path="/" element={<Articles />} />
+      </Routes>
     </div>
   );
 }
