@@ -1,7 +1,20 @@
+import Header from "./Components/Header";
+import NavBar from "./Components/NavBar";
+import Articles from "./Components/Articles";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Header />
+      <NavBar />
+
+      <Routes>
+        <Route path="/" element={<Articles />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
