@@ -1,4 +1,7 @@
 const CommentsCard = ({ comment }) => {
+  let date = new Date(comment.created_at);
+  date = date.toUTCString();
+
   return (
     <li>
       <article className="single-comment">
@@ -9,8 +12,7 @@ const CommentsCard = ({ comment }) => {
 
         <p>Votes: {comment.votes}</p>
 
-        <p>Date: {comment.created_at}</p>
-        {/* Date to be formatted at a later stage */}
+        <p>{date}</p>
       </article>
     </li>
   );

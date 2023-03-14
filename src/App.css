@@ -110,6 +110,10 @@ img {
   font-size: 0.7rem;
 }
 
+.comment-votes button {
+  margin: 5px;
+}
+
 /* media-queries */
 
 @media only screen and (max-width: 768px) {
