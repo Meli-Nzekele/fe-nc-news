@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticlesById } from "../Utils/api";
 import Comments from "./Comments";
+import Votes from "./Votes";
 
 const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const { article_id } = useParams();
+
+  let date = new Date(singleArticle.created_at);
+  date = date.toLocaleString();
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,7 +33,7 @@ const SingleArticle = () => {
             <p className="single-article-topic">{singleArticle.topic}</p>
             <h3>{singleArticle.title}</h3>
             <p>By: {singleArticle.author}</p>
-            <p>Date: {singleArticle.created_at}</p>
+            <p>{date}</p>
             <img
               src={singleArticle.article_img_url}
               alt={singleArticle.title}
@@ -38,8 +41,10 @@ const SingleArticle = () => {
             />
             <p>{singleArticle.body}</p>
 
-            <p>Votes: {singleArticle.votes}</p>
-            {/* Date to be formatted at a later stage */}
+            <Votes
+              articleVotes={singleArticle.votes}
+              article_id={singleArticle.article_id}
+            />
             <Link to="/">
               <button>Back to Articles</button>
             </Link>
