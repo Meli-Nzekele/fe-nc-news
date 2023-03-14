@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticlesById } from "../Utils/api";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState([]);
@@ -43,10 +44,10 @@ const SingleArticle = () => {
             <Link to="/">
               <button>Back to Articles</button>
             </Link>
-            <hr />
           </article>
         </li>
       </ul>
+      <Comments article_id={article_id} />
     </section>
   );
 };
