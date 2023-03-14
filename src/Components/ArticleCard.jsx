@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
+  let date = new Date(article.created_at);
+  date = date.toLocaleString();
   return (
     <li className="article-card">
       <article>
@@ -10,8 +12,7 @@ const ArticleCard = ({ article }) => {
         <p>By: {article.author}</p>
         <p>Votes: {article.votes}</p>
         <p>Comments: {article.comment_count}</p>
-        <p>Date: {article.created_at}</p>
-        {/* Date to be formatted at a later stage */}
+        <p>{date}</p>
 
         <Link to={`/articles/${article.article_id}`}>
           <button>Read More</button>
