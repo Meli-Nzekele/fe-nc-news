@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticlesById } from "../Utils/api";
 import Comments from "./Comments";
-import Votes from "./Votes";
+import ArticleVotes from "./ArticleVotes";
 
 const SingleArticle = () => {
   const [singleArticle, setSingleArticle] = useState([]);
@@ -41,7 +41,7 @@ const SingleArticle = () => {
             />
             <p>{singleArticle.body}</p>
 
-            <Votes
+            <ArticleVotes
               articleVotes={singleArticle.votes}
               article_id={singleArticle.article_id}
             />
