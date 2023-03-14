@@ -27,6 +27,9 @@ const Comments = ({ article_id }) => {
       </div>
       <ul>
         {comments.map((comment) => {
+          if (Object.keys(comment).length === 0) {
+            return <li>No Comments</li>;
+          }
           return <CommentsCard key={comment.comment_id} comment={comment} />;
         })}
       </ul>
