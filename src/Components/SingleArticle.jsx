@@ -39,7 +39,6 @@ const SingleArticle = () => {
             <p>{singleArticle.body}</p>
 
             <p>Votes: {singleArticle.votes}</p>
-            <p>Comments: {singleArticle.comment_count}</p>
             {/* Date to be formatted at a later stage */}
             <Link to="/">
               <button>Back to Articles</button>
