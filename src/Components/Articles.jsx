@@ -17,18 +17,16 @@ const Articles = () => {
 
   return isLoading ? (
     <section>
-      <h2>Loading...</h2>
+      <h2 className="loading-header">Loading...</h2>
     </section>
   ) : (
     <main>
       <section>
-        <article>
-          <ul className="articles">
-            {articles.map((article) => {
-              return <ArticleCard key={article.article_id} article={article} />;
-            })}
-          </ul>
-        </article>
+        <ul className="articles">
+          {articles.map((article) => {
+            return <ArticleCard key={article.article_id} article={article} />;
+          })}
+        </ul>
       </section>
     </main>
   );
