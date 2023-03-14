@@ -12,15 +12,16 @@ Header {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 20px;
+  margin: 40px;
 }
 
 .nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 20px 0 10px;
-  padding: 0;
+  margin: 10px 20px;
+  padding: 20px 30px;
+  border: 1px solid var(--primary-colour);
 }
 
 ul {
@@ -35,6 +36,10 @@ button {
   background-color: var(--secondary-colour);
   padding: 7px;
   border: 1px solid var(--primary-colour);
+}
+
+.loading-header {
+  text-align: center;
 }
 
 .articles {
@@ -64,7 +69,8 @@ img {
 }
 
 .single-article {
-  padding: 20px;
+  margin: 30px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -84,11 +90,24 @@ img {
 }
 
 .single-article button {
-  margin-bottom: 20px;
+  margin: 30px 0 10px;
 }
 
-.loading-header {
-  text-align: center;
+.comments-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+.single-comment {
+  margin: 20px 10px;
+  padding: 20px;
+  border: 0.5px solid var(--primary-colour);
+}
+
+.comment-body {
+  font-size: 0.7rem;
 }
 
 /* media-queries */
