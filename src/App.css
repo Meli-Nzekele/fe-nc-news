@@ -5,6 +5,7 @@
 :root {
   --primary-colour: #000;
   --secondary-colour: #fff;
+  --warning-colour: #eb1b23;
 }
 
 Header {
@@ -100,6 +101,7 @@ img {
   gap: 10px;
   font-size: 1.5rem;
 }
+
 .single-comment {
   margin: 20px 10px;
   padding: 20px;
@@ -110,8 +112,45 @@ img {
   font-size: 0.7rem;
 }
 
-.comment-votes button {
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 100px;
+  font-size: 1.5rem;
+}
+
+label {
+  margin: 20px 0;
+}
+
+textarea {
+  padding: 20px;
+  text-align: center;
+}
+
+.characters-message,
+.characters-limit {
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--primary-colour);
+}
+
+.characters-message {
+  color: var(--primary-colour);
+}
+
+.characters-limit {
+  color: var(--warning-colour);
+}
+
+.article-votes button {
   margin: 5px;
+}
+
+.comment-votes button {
+  margin: 2px;
+  padding: 4px;
 }
 
 /* media-queries */
