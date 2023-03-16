@@ -1,9 +1,9 @@
 import Header from "./Components/Header";
 import NavBar from "./Components/NavBar";
-import Articles from "./Components/Articles";
+import Articles from "./Components/Articles/Articles";
+import SingleArticle from "./Components/Articles/SingleArticle";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import SingleArticle from "./Components/SingleArticle";
 
 function App() {
   return (

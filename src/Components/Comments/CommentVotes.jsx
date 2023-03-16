@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { patchArticleVotes } from "../Utils/api";
+import { patchCommentVotes } from "../../Utils/api";
 
-const Votes = ({ articleVotes, article_id }) => {
-  const [votes, setVotes] = useState(articleVotes);
+const CommentVotes = ({ commentVotes, comment_id }) => {
+  const [votes, setVotes] = useState(commentVotes);
   const [error, setError] = useState(null);
 
   const handleVote = (numOfVotes) => {
@@ -12,7 +12,7 @@ const Votes = ({ articleVotes, article_id }) => {
 
     setError(null);
 
-    patchArticleVotes(article_id, numOfVotes).catch(() => {
+    patchCommentVotes(comment_id, numOfVotes).catch(() => {
       setVotes((currentVotes) => {
         return currentVotes - numOfVotes;
       });
@@ -37,4 +37,4 @@ const Votes = ({ articleVotes, article_id }) => {
   );
 };
 
-export default Votes;
+export default CommentVotes;

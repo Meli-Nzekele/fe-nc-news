@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getCommentsById } from "../Utils/api";
+import { getCommentsById } from "../../Utils/api";
 import CommentsCard from "./CommentsCard";
+import CommentAdder from "./CommentAdder";
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -9,8 +10,8 @@ const Comments = ({ article_id }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    getCommentsById(article_id).then((articleData) => {
-      setComments(articleData);
+    getCommentsById(article_id).then((commentsData) => {
+      setComments(commentsData);
       setIsLoading(false);
     });
   }, [article_id]);
@@ -21,16 +22,14 @@ const Comments = ({ article_id }) => {
     </section>
   ) : (
     <section>
+      <CommentAdder setComments={setComments} article_id={article_id} />
       <div className="comments-div">
         <i className="fa-regular fa-comment"></i>{" "}
         <p>{comments.length} comments </p>
       </div>
       <ul>
-        {comments.map((comment) => {
-          if (Object.keys(comment).length === 0) {
-            return <li>No Comments</li>;
-          }
-          return <CommentsCard key={comment.comment_id} comment={comment} />;
+        {comments.map((comment, index) => {
+          return <CommentsCard key={index} comment={comment} />;
         })}
       </ul>
     </section>

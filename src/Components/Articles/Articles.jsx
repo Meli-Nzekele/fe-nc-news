@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "../Utils/api";
+import { getArticles } from "../../Utils/api";
 import ArticleCard from "./ArticleCard";
 
 const Articles = () => {
