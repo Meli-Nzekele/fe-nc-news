@@ -13,7 +13,7 @@ Header {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 40px;
+  margin: 40px 0 20px;
 }
 
 .nav-bar {
@@ -22,7 +22,6 @@ Header {
   justify-content: space-evenly;
   margin: 10px 20px;
   padding: 20px 30px;
-  border: 1px solid var(--primary-colour);
   font-size: 0.7rem;
 }
 .home-main {
@@ -69,6 +68,7 @@ figcaption {
 }
 
 ul {
+  margin: 0;
   padding: 0;
 }
 
@@ -94,9 +94,44 @@ button {
   display: inline-block;
   text-transform: uppercase;
   font-size: 0.7rem;
-  margin-top: 60px;
+  margin: 20px 0;
   padding: 7px;
   border: 1px solid var(--primary-colour);
+}
+
+.sort-dropdown,
+.orderby-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.orderby-section {
+  gap: 20px;
+}
+
+.sort-dropdown-title,
+.orderby-title {
+  font-size: 0.8rem;
+}
+
+select {
+  margin: 0 10px;
+  padding: 2px 0;
+  border-radius: 2px;
+  border: 0.5px solid var(--primary-colour);
+  text-align: left;
+}
+
+.order-by-button {
+  padding: 4px;
+  border-radius: 2px;
+  border: 0.5px solid var(--primary-colour);
+}
+
+.queries-submit-btn {
+  margin-top: 20px;
+  padding: 5px;
 }
 
 .articles {
@@ -104,7 +139,7 @@ button {
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin: 0;
-  padding: 20px;
+  padding: 0 0 20px;
   text-align: center;
 }
 
@@ -126,7 +161,7 @@ img {
 }
 
 .single-article {
-  margin: 30px;
+  margin: 20px 0;
   padding: 10px;
   text-align: center;
 }
