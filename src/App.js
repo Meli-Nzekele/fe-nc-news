@@ -1,5 +1,6 @@
 import Header from "./Components/Header";
 import NavBar from "./Components/NavBar";
+import Home from "./Components/Home";
 import Articles from "./Components/Articles/Articles";
 import SingleArticle from "./Components/Articles/SingleArticle";
 import { Route, Routes } from "react-router-dom";
@@ -11,8 +12,10 @@ function App() {
       <Header />
       <NavBar />
       <Routes>
-        <Route path="/" element={<Articles />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:topic" element={<Articles />} />
+        <Route path="/article/:article_id" element={<SingleArticle />} />
       </Routes>
     </div>
   );

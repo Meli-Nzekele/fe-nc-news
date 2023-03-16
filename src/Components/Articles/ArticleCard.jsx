@@ -14,7 +14,7 @@ const ArticleCard = ({ article }) => {
         <p>Comments: {article.comment_count}</p>
         <p>{date}</p>
 
-        <Link to={`/articles/${article.article_id}`}>
+        <Link to={`/article/${article.article_id}`}>
           <button>Read More</button>
         </Link>
       </article>
