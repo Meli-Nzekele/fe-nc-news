@@ -24,6 +24,18 @@ Header {
   border: 1px solid var(--primary-colour);
 }
 
+.home-figure {
+  position: relative;
+}
+
+figcaption {
+  background-color: transparent;
+  color: var(--primary-colour);
+  font-size: 10px;
+  display: block;
+  position: absolute;
+}
+
 ul {
   padding: 0;
 }
@@ -40,6 +52,19 @@ button {
 
 .loading-header {
   text-align: center;
+}
+
+.articles-main {
+  text-align: center;
+}
+
+.topic-header {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-top: 60px;
+  padding: 7px;
+  border: 1px solid var(--primary-colour);
 }
 
 .articles {

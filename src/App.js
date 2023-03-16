@@ -1,9 +1,10 @@
 import Header from "./Components/Header";
 import NavBar from "./Components/NavBar";
+import Home from "./Components/Home";
 import Articles from "./Components/Articles";
+import SingleArticle from "./Components/SingleArticle";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import SingleArticle from "./Components/SingleArticle";
 
 function App() {
   return (
@@ -11,8 +12,10 @@ function App() {
       <Header />
       <NavBar />
       <Routes>
-        <Route path="/" element={<Articles />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:topic" element={<Articles />} />
+        <Route path="/article/:article_id" element={<SingleArticle />} />
       </Routes>
     </div>
   );
