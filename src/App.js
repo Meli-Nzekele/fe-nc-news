@@ -1,8 +1,8 @@
 import Header from "./Components/Header";
 import NavBar from "./Components/NavBar";
 import Home from "./Components/Home";
-import Articles from "./Components/Articles";
-import SingleArticle from "./Components/SingleArticle";
+import Articles from "./Components/Articles/Articles";
+import SingleArticle from "./Components/Articles/SingleArticle";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
