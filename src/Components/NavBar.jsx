@@ -18,7 +18,7 @@ const NavBar = () => {
           Home
         </Link>
         <Link className="Link" to="/articles">
-          All Articles
+          articles
         </Link>
         {topics.map((topic, index) => {
           return (

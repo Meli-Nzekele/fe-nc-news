@@ -10,12 +10,25 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topic) => {
+export const getArticles = () => {
+  return ncnewsApi.get("/api/articles/").then((articles) => {
+    return articles.data.articles;
+  });
+};
+
+export const getArticlesByParams = (topic, searchParams) => {
+  const sortBy = searchParams.get("sort_by");
+  const orderBy = searchParams.get("order_by");
+  let queriesObject = {};
+
+  if (topic) {
+    queriesObject = { topic: topic, sort_by: sortBy, order_by: orderBy };
+  } else if (!topic) {
+    queriesObject = { sort_by: sortBy, order_by: orderBy };
+  }
   return ncnewsApi
     .get("/api/articles/", {
-      params: {
-        topic,
-      },
+      params: queriesObject,
     })
     .then((articles) => {
       return articles.data.articles;
