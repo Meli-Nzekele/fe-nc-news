@@ -27,7 +27,7 @@ const Home = () => {
         <h2 className="home-header">Today's Top Stories</h2>
         <section>
           <article>
-            <Link to={`/articles/${singleArticle[0].article_id}`}>
+            <Link to={`/article/${singleArticle[0].article_id}`}>
               <figure className="home-figure">
                 <img
                   src={singleArticle[0].article_img_url}
