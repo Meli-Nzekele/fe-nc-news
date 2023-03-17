@@ -4,6 +4,12 @@ const ncnewsApi = axios.create({
   baseURL: "https://be-nc-news-q7oo.onrender.com",
 });
 
+export const getUsers = () => {
+  return ncnewsApi.get(`/api/users`).then((users) => {
+    return users.data.users;
+  });
+};
+
 export const getTopics = () => {
   return ncnewsApi.get(`/api/topics`).then((topics) => {
     return topics.data.topics;
@@ -77,4 +83,8 @@ export const postCommentByArticleId = (article_id, user, newComment) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const deleteCommentByCommentID = (comment_id) => {
+  return ncnewsApi.delete(`/api/comments/${comment_id}`);
 };

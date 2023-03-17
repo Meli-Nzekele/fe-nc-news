@@ -40,7 +40,7 @@ const Articles = () => {
       <h2 className="topic-header">{topic ? topic : "All Articles"}</h2>
       <section className="sort-dropdown">
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="sort-dropdown-div">
             <label className="sort-dropdown-title" htmlFor="sort-by">
               Sort By:
             </label>
@@ -57,10 +57,9 @@ const Articles = () => {
               <option value="comment_count">Comments</option>
               <option value="created_at">Date</option>
             </select>
-          </div>
-          <div>
+
             <label className="orderby-title" htmlFor="order-by">
-              Order:
+              Order by:
             </label>
             <select
               id="order-by"
@@ -68,8 +67,8 @@ const Articles = () => {
               value={orderBy}
               onChange={(event) => setOrderBy(event.target.value)}
             >
-              <option value="DESC">desc</option>
-              <option value="ASC">asc</option>
+              <option value="DESC">Desc</option>
+              <option value="ASC">Asc</option>
             </select>
           </div>
           <button className="queries-submit-btn" type="submit">
