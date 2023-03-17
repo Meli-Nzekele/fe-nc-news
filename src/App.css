@@ -6,6 +6,7 @@
   --primary-colour: #000;
   --secondary-colour: #fff;
   --warning-colour: #eb1b23;
+  --accent-color: #f18f24;
 }
 
 Header {
@@ -15,8 +16,6 @@ Header {
   align-items: center;
   margin: 30px 0 0;
 }
-
-/* Login */
 
 ul {
   margin: 0;
@@ -33,16 +32,26 @@ button {
   border: 1px solid var(--primary-colour);
 }
 
-.Login-btn {
+/* Header */
+
+.Logged-in-btn,
+.Logged-out-btn {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   border: none;
+  font-size: 0.8rem;
+}
+
+.Logged-in-btn i {
+  color: var(--accent-color);
 }
 
 .Login-btn-Link {
   text-decoration: none;
 }
+
+/* nav bar */
 
 .nav-bar {
   display: flex;
@@ -66,6 +75,58 @@ button {
   background-color: var(--primary-colour);
   color: var(--secondary-colour);
 }
+
+/* Login */
+
+.user-header {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin: 20px 0;
+  padding: 7px;
+  border: 1px solid var(--primary-colour);
+}
+
+.user-login-form {
+  margin: 0;
+  padding: 20px 40px;
+}
+
+.username {
+  font-size: 1rem;
+}
+
+#username-select {
+  max-width: 300px;
+}
+
+.logged-in-message,
+.user-login-btn {
+  margin: 20px -5px 0;
+  padding: 5px;
+  border: none;
+  text-align: left;
+  font-weight: bold;
+}
+
+.logged-in-message {
+  border: none;
+  text-align: left;
+  font-weight: bold;
+}
+
+.user-login-btn {
+  border: 1px solid var(--primary-colour);
+  max-width: 50px;
+}
+
+.user-logout-btn {
+  margin: 0 40px;
+  padding: 5px;
+  max-width: 80px;
+}
+
+/* Home */
 
 .home-main {
   text-align: center;
@@ -333,12 +394,18 @@ textarea {
 /* media-queries */
 
 @media only screen and (max-width: 768px) {
-  .articles {
+  .articles,
+  .users-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  #username-select {
+    max-width: 300px;
   }
 }
 @media only screen and (max-width: 500px) {
-  .articles {
+  .articles,
+  .users-list {
     grid-template-columns: repeat(1, 1fr);
   }
 }
