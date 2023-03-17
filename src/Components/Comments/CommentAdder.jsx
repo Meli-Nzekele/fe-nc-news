@@ -5,6 +5,7 @@ const CommentAdder = ({ setComments, article_id }) => {
   const [newComment, setNewComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [submitMessage, setSubmitMessage] = useState(true);
+  const isTextAreaEmpty = newComment.length === 0;
 
   const user = "grumpy19";
 
@@ -40,8 +41,8 @@ const CommentAdder = ({ setComments, article_id }) => {
           maxLength="101"
           required
         ></textarea>
-        <button type="submit">
-          {submitMessage === true ? "Submit Comment" : "Comment Submitted"}
+        <button type="submit" disabled={isTextAreaEmpty}>
+          {submitMessage ? "Submit Comment" : "Comment Submitted"}
         </button>
       </form>
       <p
