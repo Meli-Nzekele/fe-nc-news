@@ -1,20 +1,35 @@
 import { useEffect, useState } from "react";
-import { getCommentsById } from "../../Utils/api";
+import { getCommentsById, deleteCommentByCommentID } from "../../Utils/api";
 import CommentsCard from "./CommentsCard";
 import CommentAdder from "./CommentAdder";
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
+  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-
     getCommentsById(article_id).then((commentsData) => {
       setComments(commentsData);
       setIsLoading(false);
     });
   }, [article_id]);
+
+  const deleteComment = (comment_id) => {
+    setIsDeleted(true);
+    setShowDeleteMessage(true);
+    deleteCommentByCommentID(comment_id).then(() => {
+      setComments((currComments) => {
+        return currComments.filter(
+          (comment) => comment.comment_id !== comment_id
+        );
+      });
+      setIsDeleted(false);
+      setShowDeleteMessage(false);
+    });
+  };
 
   return isLoading ? (
     <section>
@@ -27,9 +42,35 @@ const Comments = ({ article_id }) => {
         <i className="fa-regular fa-comment"></i>{" "}
         <p>{comments.length} comments </p>
       </div>
+      <p className="comments-message">
+        {showDeleteMessage ? "Comment Deleted" : "showing all comments"}
+      </p>
       <ul>
-        {comments.map((comment, index) => {
-          return <CommentsCard key={index} comment={comment} />;
+        {comments.map((comment) => {
+          return (
+            <li key={comment.comment_id} className="single-comment">
+              <CommentsCard
+                article_id={comment.article_id}
+                author={comment.author}
+                body={comment.body}
+                comment_id={comment.comment_id}
+                votes={comment.votes}
+                created_at={comment.created_at}
+              />
+              {comment.author === "grumpy19" ? (
+                <button
+                  className="delete-comment-btn"
+                  onClick={() => deleteComment(comment.comment_id)}
+                >
+                  {isDeleted ? "Deleting Comment" : "Delete Comment"}
+                </button>
+              ) : (
+                <p className="delete-permission">
+                  You don't have access to edit/delete this comment
+                </p>
+              )}
+            </li>
+          );
         })}
       </ul>
     </section>
