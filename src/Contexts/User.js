@@ -2,20 +2,23 @@ import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
-export const UserProvider = (props) => {
-  const [user, setUser] = useState({
-    username: "grumpy19",
-    name: "Paul Grump",
-    avatar_url:
-      "https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013",
-  });
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState("");
+  const [loggedInUser, setLoggedInUser] = useState(false);
+
+  const login = (username) => {
+    setUser(username);
+    setLoggedInUser(true);
+  };
 
   const logout = () => {
-    setUser(null);
+    setUser("");
+    setLoggedInUser(false);
   };
+
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
-      {props.children}
+    <UserContext.Provider value={{ user, login, loggedInUser, logout }}>
+      {children}
     </UserContext.Provider>
   );
 };
