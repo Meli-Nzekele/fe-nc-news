@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../Contexts/User";
 import { postCommentByArticleId } from "../../Utils/api";
 
 const CommentAdder = ({ setComments, article_id }) => {
   const [newComment, setNewComment] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [submitMessage, setSubmitMessage] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const { user } = useContext(UserContext);
   const isTextAreaEmpty = newComment.length === 0;
-
-  const user = "grumpy19";
 
   const handleSubmit = (event) => {
     event.preventDefault();
