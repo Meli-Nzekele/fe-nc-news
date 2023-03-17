@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../../Contexts/User";
 import { getCommentsById, deleteCommentByCommentID } from "../../Utils/api";
 import CommentsCard from "./CommentsCard";
 import CommentAdder from "./CommentAdder";
 
 const Comments = ({ article_id }) => {
-  const [comments, setComments] = useState([]);
   const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+  const [comments, setComments] = useState([]);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,7 +59,7 @@ const Comments = ({ article_id }) => {
                 votes={comment.votes}
                 created_at={comment.created_at}
               />
-              {comment.author === "grumpy19" ? (
+              {comment.author === user ? (
                 <button
                   className="delete-comment-btn"
                   onClick={() => deleteComment(comment.comment_id)}
