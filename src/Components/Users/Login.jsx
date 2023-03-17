@@ -1,21 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../Contexts/User";
 import { getUsers } from "../../Utils/api";
 
 const Login = () => {
   const [users, setUsers] = useState([]);
+  const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  //   const [sortBy, setSortBy] = useState("article_id");
-  //   const [orderBy, setOrderBy] = useState("DESC");
-  //   const [searchParams, setSearchParams] = useSearchParams();
-  //   const { topic } = useParams();
+  const { user, login, logout, loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
     getUsers().then((usersData) => {
-      setUsers(usersData);
-      setIsLoading(false);
+      setUsers(
+        usersData.map((userData) => {
+          setIsLoading(false);
+          return userData.username;
+        })
+      );
     });
   }, []);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    if (users.includes(username)) {
+      login(username);
+    }
+  };
+
+  const handleLogout = (event) => {
+    event.preventDefault();
+    if (users.includes(username)) {
+      logout(username);
+    }
+  };
 
   return isLoading ? (
     <section>
@@ -23,35 +40,43 @@ const Login = () => {
     </section>
   ) : (
     <section className="user-login-main">
-      <h2 className="user-login-header">Login Below</h2>
-      <section className="user-login">
-        <form>
-          <div>
-            <label className="select-user" htmlFor="select-user">
-              Select Username:
-            </label>
+      <form className="user-login-form" onSubmit={handleLogin}>
+        <h2 className="user-login-header">Login</h2>
+        <label className="username" htmlFor="username-selec">
+          Select your username:
+        </label>
+        <select
+          id="username-select"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        >
+          <option value="GuestUser">@GuestUser</option>
+          <option value="tickle122">@tickle122</option>
+          <option value="grumpy19">@grumpy19</option>
+          <option value="happyamy2016">@happyamy2016</option>
+          <option value="cooljmessy">@cooljmessy</option>
+          <option value="weegembump">@weegembump</option>
+          <option value="jessjelly">@jessjelly</option>
+        </select>
 
-            <select
-              id="select-user"
-              name="select-user"
-              value={users}
-              onChange={(event) => setUsers(event.target.value)}
-            >
-              {users.map((user, index) => {
-                return (
-                  <option
-                    key={index}
-                    value={`${user.username}`}
-                  >{`${user.username}`}</option>
-                );
-              })}
-            </select>
-          </div>
-          <button className="user-login-btn" type="submit">
-            Login
-          </button>
-        </form>
-      </section>
+        <button
+          className={
+            loggedInUser && username === user
+              ? "logged-in-message"
+              : "user-login-btn"
+          }
+          type="submit"
+        >
+          {loggedInUser && username === user
+            ? `Logged in as ${username}`
+            : "Login"}
+        </button>
+      </form>
+      {loggedInUser && username === user ? (
+        <button className="user-logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      ) : null}
     </section>
   );
 };
