@@ -7,7 +7,8 @@ const CommentAdder = ({ setComments, article_id }) => {
   const [submitMessage, setSubmitMessage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(UserContext);
-  const isTextAreaEmpty = newComment.length === 0;
+
+  const disableTextArea = newComment.length === 0 || !user;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,11 +38,13 @@ const CommentAdder = ({ setComments, article_id }) => {
           value={newComment}
           id="newComment"
           onChange={(event) => setNewComment(event.target.value)}
-          placeholder="Add your comment here..."
+          placeholder={
+            !user ? "Login to add a comment" : "Add your comment here..."
+          }
           maxLength="101"
           required
         ></textarea>
-        <button type="submit" disabled={isTextAreaEmpty}>
+        <button type="submit" disabled={disableTextArea}>
           {submitMessage ? "Submit Comment" : "Comment Submitted"}
         </button>
       </form>
