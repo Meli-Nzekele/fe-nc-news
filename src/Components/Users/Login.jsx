@@ -42,7 +42,7 @@ const Login = () => {
     <section className="user-login-main">
       <form className="user-login-form" onSubmit={handleLogin}>
         <h2 className="user-login-header">Login</h2>
-        <label className="username" htmlFor="username-selec">
+        <label className="username" htmlFor="username-select">
           Select your username:
         </label>
         <select
@@ -50,7 +50,6 @@ const Login = () => {
           value={username}
           onChange={(event) => setUsername(event.target.value)}
         >
-          <option value="GuestUser">@GuestUser</option>
           <option value="tickle122">@tickle122</option>
           <option value="grumpy19">@grumpy19</option>
           <option value="happyamy2016">@happyamy2016</option>
