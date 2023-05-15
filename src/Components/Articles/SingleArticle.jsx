@@ -45,7 +45,7 @@ const SingleArticle = () => {
               articleVotes={singleArticle.votes}
               article_id={singleArticle.article_id}
             />
-            <Link to="/">
+            <Link to="/articles">
               <button>Back to Articles</button>
             </Link>
           </article>
